@@ -4,6 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        overflow: hidden;
+        width: 100vw;
+        height: 100vh;
+      }
+    </style>
   </head>
-  <body></body>
+  <body>
+    <div id="container"></div>
+    <!-- LIBS -->
+    <script src="./libs/three.js"></script>
+    <script src="./libs/OrbitControls.js"></script>
+    <script src="./libs/dat.gui.js"></script>
+
+    <!-- SHADERS -->
+    <script src="glsl/vertex.js"></script>
+    <script src="glsl/fragment.js"></script>
+
+    <!-- MAIN APP -->
+    <script src="./js/app.js"></script>
+  </body>
 </html>
