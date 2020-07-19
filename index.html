@@ -7,6 +7,27 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <!-- Menu section -->
+    <div class="global-menu">
+      <div class="main-menu">
+        <div class="main-menu__wrapper">
+          <a class="main-menu__link menu-item font-bold" href="#">contact</a>
+          <a class="main-menu__link menu-item font-bold" href="#">projects</a>
+        </div>
+        <div class="close-btn menu-item" id="closeBtn">close</div>
+      </div>
+      <svg
+        class="shape-overlays"
+        id="shapeOverlay"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+      >
+        <path class="shape-overlays__path"></path>
+        <path class="shape-overlays__path"></path>
+        <path class="shape-overlays__path"></path>
+      </svg>
+    </div>
+    <!-- ------------ -->
     <section class="splash">
       <div class="text-container">
         <h2 class="font-bold purple">
@@ -39,7 +60,7 @@
         <div class="line"></div>
       </div>
       <div class="button">
-        <h2 class="font-medium purple">menu</h2>
+        <h2 class="font-medium purple" id="openMenuBtn">menu</h2>
       </div>
     </div>
 
@@ -61,6 +82,7 @@
     <script src="./libs/three.js"></script>
     <script src="./libs/OrbitControls.js"></script>
     <script src="./libs/dat.gui.js"></script>
+    <script src="./libs/easings.js"></script>
 
     <!-- SHADERS -->
     <script src="glsl/vertex.js"></script>
@@ -68,5 +90,6 @@
 
     <!-- MAIN APP -->
     <script src="./js/app.js"></script>
+    <script src="./js/animations/svg-overlay.js"></script>
   </body>
 </html>
