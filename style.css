@@ -106,6 +106,7 @@
   height: 100vh;
   width: 100%;
   position: relative;
+  overflow: hidden;
 }
 .splash .text-container {
   position: absolute;
@@ -156,6 +157,45 @@
 
 .purple {
   color: #5d576b !important;
+}
+
+.skills-wheel {
+  position: absolute;
+  display: block;
+  width: 500px;
+  right: -250px;
+  bottom: -250px;
+  animation: infinite-rotation 50s infinite;
+}
+
+.skills-wheel--second {
+  width: 450px;
+  right: -225px;
+  bottom: -225px;
+  animation: reverse-infinite-rotation 50s infinite;
+}
+
+.skills-wheel .svg-logo {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@keyframes infinite-rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes reverse-infinite-rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
 }
 
 .links {
