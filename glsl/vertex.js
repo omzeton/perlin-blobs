@@ -1,7 +1,4 @@
 const vertexShader = `
-varying vec2 vUv;
-uniform float time;
-
 //
 // GLSL textureless classic 3D noise "cnoise",
 // with an RSL-style periodic variant "pnoise".
@@ -13,7 +10,7 @@ uniform float time;
 //
 // Copyright (c) 2011 Stefan Gustavson. All rights reserved.
 // Distributed under the MIT license. See LICENSE file.
-// https://github.com/stegu/webgl-noise
+// https://github.com/ashima/webgl-noise
 //
 
 vec3 mod289(vec3 x)
@@ -58,16 +55,16 @@ float cnoise(vec3 P)
   vec4 ixy0 = permute(ixy + iz0);
   vec4 ixy1 = permute(ixy + iz1);
 
-  vec4 gx0 = ixy0 * (1.0 / 7.0);
-  vec4 gy0 = fract(floor(gx0) * (1.0 / 7.0)) - 0.5;
+  vec4 gx0 = ixy0 * (1.0 / 5.0);
+  vec4 gy0 = fract(floor(gx0) * (1.0 / 5.0)) - 0.5;
   gx0 = fract(gx0);
   vec4 gz0 = vec4(0.5) - abs(gx0) - abs(gy0);
   vec4 sz0 = step(gz0, vec4(0.0));
   gx0 -= sz0 * (step(0.0, gx0) - 0.5);
   gy0 -= sz0 * (step(0.0, gy0) - 0.5);
 
-  vec4 gx1 = ixy1 * (1.0 / 7.0);
-  vec4 gy1 = fract(floor(gx1) * (1.0 / 7.0)) - 0.5;
+  vec4 gx1 = ixy1 * (1.0 / 5.0);
+  vec4 gy1 = fract(floor(gx1) * (1.0 / 5.0)) - 0.5;
   gx1 = fract(gx1);
   vec4 gz1 = vec4(0.5) - abs(gx1) - abs(gy1);
   vec4 sz1 = step(gz1, vec4(0.0));
@@ -106,7 +103,7 @@ float cnoise(vec3 P)
   vec3 fade_xyz = fade(Pf0);
   vec4 n_z = mix(vec4(n000, n100, n010, n110), vec4(n001, n101, n011, n111), fade_xyz.z);
   vec2 n_yz = mix(n_z.xy, n_z.zw, fade_xyz.y);
-  float n_xyz = mix(n_yz.x, n_yz.y, fade_xyz.x); 
+  float n_xyz = mix(n_yz.x, n_yz.y, fade_xyz.x);
   return 2.2 * n_xyz;
 }
 
@@ -128,16 +125,16 @@ float pnoise(vec3 P, vec3 rep)
   vec4 ixy0 = permute(ixy + iz0);
   vec4 ixy1 = permute(ixy + iz1);
 
-  vec4 gx0 = ixy0 * (1.0 / 7.0);
-  vec4 gy0 = fract(floor(gx0) * (1.0 / 7.0)) - 0.5;
+  vec4 gx0 = ixy0 * (1.0 / 5.0);
+  vec4 gy0 = fract(floor(gx0) * (1.0 / 5.0)) - 0.5;
   gx0 = fract(gx0);
   vec4 gz0 = vec4(0.5) - abs(gx0) - abs(gy0);
   vec4 sz0 = step(gz0, vec4(0.0));
   gx0 -= sz0 * (step(0.0, gx0) - 0.5);
   gy0 -= sz0 * (step(0.0, gy0) - 0.5);
 
-  vec4 gx1 = ixy1 * (1.0 / 7.0);
-  vec4 gy1 = fract(floor(gx1) * (1.0 / 7.0)) - 0.5;
+  vec4 gx1 = ixy1 * (1.0 / 5.0);
+  vec4 gy1 = fract(floor(gx1) * (1.0 / 5.0)) - 0.5;
   gx1 = fract(gx1);
   vec4 gz1 = vec4(0.5) - abs(gx1) - abs(gy1);
   vec4 sz1 = step(gz1, vec4(0.0));
@@ -176,12 +173,48 @@ float pnoise(vec3 P, vec3 rep)
   vec3 fade_xyz = fade(Pf0);
   vec4 n_z = mix(vec4(n000, n100, n010, n110), vec4(n001, n101, n011, n111), fade_xyz.z);
   vec2 n_yz = mix(n_z.xy, n_z.zw, fade_xyz.y);
-  float n_xyz = mix(n_yz.x, n_yz.y, fade_xyz.x); 
-  return 2.2 * n_xyz;
+  float n_xyz = mix(n_yz.x, n_yz.y, fade_xyz.x);
+  return 1.5 * n_xyz;
+}
+
+// Turbulence By Jaume Sanchez => https://codepen.io/spite/
+
+varying vec2 vUv;
+varying float noise;
+varying float qnoise;
+varying float displacement;
+
+uniform float time;
+uniform float displace;
+uniform float pointscale;
+uniform float decay;
+uniform float size;
+uniform float complex;
+uniform float waves;
+uniform float eqcolor;
+uniform bool fragment;
+
+float turbulence( vec3 p) {
+  float t = - 0.005;
+  for (float f = 1.0 ; f <= 1.0 ; f++ ){
+    float power = pow( 1.3, f );
+    t += abs( pnoise( vec3( power * p ), vec3( 10.0, 10.0, 10.0 ) ) / power );
+  }
+  return t;
 }
 
 void main() {
+
   vUv = uv;
-  gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+
+  noise = (2.0 *  - waves) * turbulence( decay * abs(normal + time));
+  qnoise = (0.3 *  - eqcolor) * turbulence( decay * abs(normal + time));
+  float b = pnoise( complex * (position) + vec3( (decay * 2.0) * time ), vec3( 100.0 ) );
+  
+  displacement = - atan(noise) + tan(b * displace);
+
+  vec3 newPosition = (position) + (normal * displacement);
+  gl_Position = (projectionMatrix * modelViewMatrix) * vec4( newPosition, abs(size) );
+  gl_PointSize = (3.0);
 }
 `;

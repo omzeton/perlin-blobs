@@ -10,14 +10,82 @@
         padding: 0;
       }
       body {
-        overflow: hidden;
+        height: 300vh;
+      }
+      #container {
+        position: fixed;
         width: 100vw;
         height: 100vh;
+        z-index: -1;
+      }
+      .navbar {
+        width: calc(100vw - 64px * 2);
+        height: auto;
+        display: grid;
+        grid-template-rows: 1fr;
+        grid-template-columns: repeat(3, auto) 1fr auto;
+        position: fixed;
+        top: 64px;
+        left: 64px;
+      }
+      .navbar .button {
+        margin-right: 32px;
+        color: #fff;
+        font-family: Arial, Helvetica, sans-serif;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        font-size: 12px;
+      }
+      .navbar .button:last-child {
+        margin-right: 0;
+        margin-left: 32px;
+      }
+      .navbar .button h2 {
+        position: relative;
+      }
+      .navbar .logo {
+        margin-right: 48px;
+        font-family: Arial, Helvetica, sans-serif;
+        color: #fff;
+        font-size: 25px;
+      }
+      .navbar .button:hover {
+        color: #5d576b;
+      }
+      .space {
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+      .space .line {
+        width: 100%;
+        height: 1px;
+        background-color: #fff;
       }
     </style>
   </head>
   <body>
     <div id="container"></div>
+    <div class="navbar">
+      <div class="logo">
+        <h2>Blob</h2>
+      </div>
+      <div class="button">
+        <h2>projects</h2>
+      </div>
+      <div class="button">
+        <h2>contact</h2>
+      </div>
+      <div class="space">
+        <div class="line"></div>
+      </div>
+      <div class="button">
+        <h2>home</h2>
+      </div>
+    </div>
+
+    <div class="ui-wrapper"></div>
     <!-- LIBS -->
     <script src="./libs/three.js"></script>
     <script src="./libs/OrbitControls.js"></script>
