@@ -11,16 +11,16 @@ varying float qnoise;
   void main() {
     float r, g, b;
     
-    // if (!redhell == true) {
-    //   r = sin(qnoise + rcolor);
-    //   g = normalize(qnoise + (gcolor / 2.0));
-    //   b = tan(qnoise + bcolor);
-    // } else {
-    //   r = normalize(qnoise + rcolor);
-    //   g = cos(qnoise + gcolor);
-    //   b = sin(qnoise + bcolor);
-    // }
+    if (!redhell == true) {
+      r = sin(qnoise + rcolor);
+      g = normalize(qnoise + (gcolor / 2.0));
+      b = tan(qnoise + bcolor);
+    } else {
+      r = normalize(qnoise + rcolor);
+      g = cos(qnoise + gcolor);
+      b = sin(qnoise + bcolor);
+    }
     // Szum leci od 0 do 1. Kolor razem z nim od koloru A do koloru B / od rgb.1 do rgb.2
-    gl_FragColor = vec4(0.364, 0.341, 0.419, 1.0);
+    gl_FragColor = vec4(r, g, b, 1.0);
   }
 `;

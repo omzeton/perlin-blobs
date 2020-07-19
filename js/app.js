@@ -8,7 +8,7 @@ class MagicBlob {
     this.renderer = new THREE.WebGLRenderer({ antialias: false, alpha: false });
     this.renderer.setSize(window.innerWidth, window.innerHeight);
     this.renderer.setPixelRatio(window.devicePixelRatio);
-    this.renderer.setClearColor(new THREE.Color(coolPalette[2]));
+    this.renderer.setClearColor(new THREE.Color(coolPalette[1]));
     this.renderer.shadowMap.enabled = true;
     this.scene = new THREE.Scene();
     this.camera = new THREE.PerspectiveCamera(
@@ -95,6 +95,18 @@ class MagicBlob {
 
   addSettings() {
     const gui = new dat.GUI();
+    const colors = [
+      {
+        rcolor: 0.364,
+        gcolor: 0.341,
+        bcolor: 0.419,
+      },
+      {
+        rcolor: 0.996,
+        gcolor: 0.576,
+        bcolor: 0.549,
+      },
+    ];
     this.options = {
       perlin: {
         speed: 0.38,
@@ -104,12 +116,12 @@ class MagicBlob {
         displace: 0.54,
         complex: 0.2,
         waves: 3.95,
-        eqcolor: 3.0,
-        rcolor: 0.364,
-        gcolor: 0.341,
-        bcolor: 0.419,
+        eqcolor: 6.0,
+        rcolor: 0.996,
+        gcolor: 0.576,
+        bcolor: 0.549,
         fragment: true,
-        redhell: false,
+        redhell: true,
       },
     };
     const perlinGUI = gui.addFolder('Na razie kopiuję');
@@ -118,7 +130,7 @@ class MagicBlob {
     perlinGUI.add(this.options.perlin, 'waves', 0.0, 20.0).listen();
     perlinGUI.add(this.options.perlin, 'complex', 0.1, 1.0).listen();
     perlinGUI.add(this.options.perlin, 'displace', 0.1, 1.0).listen();
-    // perlinGUI.open();
+    dat.GUI.toggleHide();
   }
 
   render() {
