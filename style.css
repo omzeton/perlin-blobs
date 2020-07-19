@@ -46,14 +46,14 @@ body {
   left: 0;
 }
 .navbar {
-  width: calc(100vw - 64px * 2);
+  width: calc(100vw - 48px * 2);
   height: auto;
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: repeat(3, auto) 1fr auto;
   position: fixed;
   top: 64px;
-  left: 64px;
+  left: 42px;
   background-color: #6cd4ff;
   padding: 16px 0;
   border-radius: 8px;
@@ -91,6 +91,7 @@ body {
   margin-right: 48px;
   color: #eaf2d7;
   font-size: 25px;
+  margin-left: 18px;
 }
 .navbar .button:hover h2:after {
   max-width: 100px;
@@ -142,15 +143,19 @@ body {
   margin-left: 16px;
   margin-top: 32px;
   padding: 8px 16px;
-  border: 1px solid #5d576b;
+  border: 2px solid #5d576b;
   background-color: #5d576b;
   color: #eaf2d7;
   cursor: pointer;
   box-shadow: 0 10px 40px 1px #5d576b;
+  transition: all 0.1s ease;
 }
 
 .splash .cta:hover {
-  background-color: #5d576b;
+  background-color: #fffb25;
+  box-shadow: 0 10px 40px 1px #fffb25;
+  border-color: #fffb25;
+  color: #5d576b;
 }
 
 .purple {
