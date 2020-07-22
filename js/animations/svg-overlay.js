@@ -1,13 +1,3 @@
-/**
- * demo.js
- * http://www.codrops.com
- *
- * Licensed under the MIT license.
- * http://www.opensource.org/licenses/mit-license.php
- *
- * Copyright 2017, Codrops
- * http://www.codrops.com
- */
 class ShapeOverlays {
   constructor(elm, parent) {
     this.elm = elm;
@@ -117,7 +107,7 @@ class ShapeOverlays {
 
 const overlay = new ShapeOverlays(
   document.getElementById('shapeOverlay'),
-  document.querySelector('.global-menu'),
+  document.querySelector('.hidden-wrapper'),
 );
 const openBtn = document.getElementById('openMenuBtn');
 const closeBtn = document.getElementById('closeBtn');
@@ -130,11 +120,17 @@ const clickHandler = () => {
   }
   overlay.toggle();
   if (overlay.isOpened) {
+    openBtn.classList.add('active');
+    closeBtn.classList.remove('active');
+
     overlay.parent.style.zIndex = 9;
     setTimeout(() => {
       menuThings.forEach(el => (el.style.opacity = 1));
     }, animationDelay);
   } else {
+    openBtn.classList.remove('active');
+    closeBtn.classList.add('active');
+
     menuThings.forEach(el => (el.style.opacity = 0));
     setTimeout(() => {
       overlay.parent.style.zIndex = -1;

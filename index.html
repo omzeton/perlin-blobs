@@ -3,18 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="./assets/ico.png" type="image/x-icon" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <link rel="stylesheet" href="./styles/global-vars.css" />
   </head>
   <body>
-    <!-- Menu section -->
-    <div class="global-menu">
+    <!-- Hidden menu -->
+    <div class="hidden-wrapper">
       <div class="main-menu">
         <div class="main-menu__wrapper">
-          <a class="main-menu__link menu-item font-bold" href="#">contact</a>
-          <a class="main-menu__link menu-item font-bold" href="#">projects</a>
+          <a class="main-menu__wrapper__link menu-item bison-outline" href="#"
+            >contact</a
+          >
+          <a class="main-menu__wrapper__link menu-item bison-outline" href="#"
+            >projects</a
+          >
         </div>
-        <div class="close-btn menu-item" id="closeBtn">close</div>
+        <div class="close-btn menu-item" id="closeBtn">
+          <span></span><span></span>
+        </div>
       </div>
       <svg
         class="shape-overlays"
@@ -29,54 +37,70 @@
     </div>
     <!-- ------------ -->
 
-    <section class="splash">
-      <div class="text-container">
-        <h2 class="font-bold purple">
-          Volumetric
-        </h2>
-        <h2 class="font-bold">
-          design
-        </h2>
-        <p class="font-light purple">
-          Yo, who doesn't like 3D shapes coming to life in a thoughtful way.<br />I
-          like to make nice stuf. Lorem ipsum dolor sitt amet.
-        </p>
-        <button class="cta font-medium">Check my stuff</button>
-      </div>
+    <!-- Sections -->
+    <main>
+      <div data-scroll>
+        <section class="splash">
+          <div class="splash__text-container">
+            <h2 class="splash__text-container__title font-bold purple">
+              Volumetric
+            </h2>
+            <h2 class="splash__text-container__title font-bold">
+              design
+            </h2>
+            <p class="splash__text-container__subtext font-light purple">
+              Yo, who doesn't like 3D shapes coming to life in a thoughtful
+              way.<br />I like to make nice stuf. Lorem ipsum dolor sitt amet.
+            </p>
+            <button class="splash__text-container__cta font-medium">
+              Check my stuff
+            </button>
+          </div>
 
-      <div class="skills-wheel skills-wheel--first">
-        <img
-          class="svg-logo"
-          src="./assets/skills_wheel_purple.svg"
-          alt="Skills wheel"
-        />
+          <!-- <div class="splash__skills-wheel">
+          <img
+            class="splash__skills-wheel__svg-logo"
+            src="./assets/skills_wheel_purple.svg"
+            alt="Skills wheel"
+          />
+        </div>
+        <div class="splash__skills-wheel splash__skills-wheel--second">
+          <img
+            class="splash__skills-wheel__svg-logo"
+            src="./assets/skills_wheel_purple.svg"
+            alt="Skills wheel"
+          />
+        </div> -->
+        </section>
+        <section class="projects">
+          <h2>test</h2>
+          <div style="height: 300vh;"></div>
+        </section>
       </div>
-      <div class="skills-wheel skills-wheel--second">
-        <img
-          class="svg-logo"
-          src="./assets/skills_wheel_purple.svg"
-          alt="Skills wheel"
-        />
-      </div>
-    </section>
+    </main>
+    <!-- ------------ -->
 
     <div id="container"></div>
 
-    <div class="navbar">
-      <div class="logo">
-        <h2 class="font-bold purple">Blob</h2>
+    <div class="splash__navbar">
+      <div class="splash__navbar__tab splash__navbar__tab--logo">
+        <h2 class="relative font-bold purple">Blob</h2>
       </div>
-      <div class="button">
-        <h2 class="font-medium">projects</h2>
+      <div class="splash__navbar__tab">
+        <h2 class="relative font-medium" inner="projects">projects</h2>
       </div>
-      <div class="button">
-        <h2 class="font-medium">contact</h2>
+      <div class="splash__navbar__tab">
+        <h2 class="relative font-medium" inner="contact">contact</h2>
       </div>
-      <div class="space">
+      <div class="splash__navbar__tab splash__navbar__tab--space">
         <div class="line"></div>
       </div>
-      <div class="button">
-        <h2 class="font-medium purple" id="openMenuBtn">menu</h2>
+      <div class="splash__navbar__tab">
+        <div class="tab-trigger" id="openMenuBtn">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </div>
     </div>
 
@@ -107,5 +131,6 @@
     <!-- MAIN APP -->
     <script src="./js/app.js"></script>
     <script src="./js/animations/svg-overlay.js"></script>
+    <script src="./js/animations/smoothScrollbar.js"></script>
   </body>
 </html>
