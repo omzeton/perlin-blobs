@@ -5,6 +5,7 @@
 
 body {
   overflow-x: hidden;
+  background-color: #6cd4ff;
 }
 
 ::-webkit-scrollbar {
@@ -14,7 +15,7 @@ body {
 }
 
 #container {
-  position: fixed;
+  position: absolute;
   width: 100vw;
   height: 100vh;
   z-index: -1;
@@ -128,7 +129,7 @@ body {
   left: 42px;
   padding: 16px 0;
   border-radius: 8px;
-  /* box-shadow: 0 40px 100px 5px #eaf2d7; */
+  /* box-shadow: 0 40px 100px 5px $white; */
 }
 
 .splash__navbar__tab {
@@ -421,4 +422,33 @@ body {
   opacity: 0;
   -webkit-transition: opacity 0.3s ease-out;
   transition: opacity 0.3s ease-out;
+}
+
+.projects {
+  height: auto;
+  width: 100vw;
+}
+
+.projects__intro-text {
+  margin-right: 64px;
+  width: 60%;
+  float: right;
+  font-size: 2.2rem;
+  text-align: right;
+  color: #eaf2d7;
+}
+
+.projects .p__wrapper {
+  overflow: hidden;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.projects .p__wrapper > span {
+  display: inline-block;
+  will-change: transform;
+  position: relative;
+  opacity: 0;
+  -webkit-transform: translateY(160%);
+          transform: translateY(160%);
 }

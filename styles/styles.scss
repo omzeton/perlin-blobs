@@ -1,3 +1,8 @@
+$blue: #6cd4ff;
+$black: #5d576b;
+$white: #eaf2d7;
+$mango: #fffb25;
+
 * {
   margin: 0;
   padding: 0;
@@ -5,6 +10,7 @@
 
 body {
   overflow-x: hidden;
+  background-color: $blue;
 }
 
 ::-webkit-scrollbar {
@@ -14,7 +20,7 @@ body {
 }
 
 #container {
-  position: fixed;
+  position: absolute;
   width: 100vw;
   height: 100vh;
   z-index: -1;
@@ -39,13 +45,13 @@ body {
     transform: translateY(-50%);
 
     &__title {
-      color: #eaf2d7;
+      color: $white;
       font-size: 120px;
       line-height: 0.9em;
     }
 
     &__subtext {
-      color: #eaf2d7;
+      color: $white;
       margin-top: 40px;
       margin-left: 32px;
       width: 650px;
@@ -57,7 +63,7 @@ body {
         position: absolute;
         height: 100%;
         width: 1px;
-        background-color: #eaf2d7;
+        background-color: $white;
         left: -16px;
         top: 0;
       }
@@ -67,18 +73,18 @@ body {
       margin-left: 16px;
       margin-top: 32px;
       padding: 8px 16px;
-      border: 2px solid #5d576b;
-      background-color: #5d576b;
-      color: #eaf2d7;
+      border: 2px solid $black;
+      background-color: $black;
+      color: $white;
       cursor: pointer;
-      box-shadow: 0 10px 40px 1px #5d576b;
+      box-shadow: 0 10px 40px 1px $black;
       transition: all 0.1s ease;
 
       &:hover {
-        background-color: #fffb25;
-        box-shadow: 0 10px 40px 1px #fffb25;
-        border-color: #fffb25;
-        color: #5d576b;
+        background-color: $mango;
+        box-shadow: 0 10px 40px 1px $mango;
+        border-color: $mango;
+        color: $black;
       }
     }
   }
@@ -116,11 +122,11 @@ body {
     left: 42px;
     padding: 16px 0;
     border-radius: 8px;
-    /* box-shadow: 0 40px 100px 5px #eaf2d7; */
+    /* box-shadow: 0 40px 100px 5px $white; */
 
     &__tab {
       margin-right: 32px;
-      color: #eaf2d7;
+      color: $white;
       font-family: Arial, Helvetica, sans-serif;
       cursor: pointer;
       display: flex;
@@ -133,7 +139,7 @@ body {
         width: 100%;
         max-width: 0px;
         height: 2px;
-        background-color: #fffb25;
+        background-color: $mango;
         left: 0;
         top: 50%;
         transform: translateY(50%);
@@ -148,7 +154,7 @@ body {
 
       &--logo {
         margin-right: 48px;
-        color: #eaf2d7;
+        color: $white;
         font-size: 25px;
         margin-left: 18px;
       }
@@ -161,7 +167,7 @@ body {
         .line {
           width: 100%;
           height: 1px;
-          background-color: #eaf2d7;
+          background-color: $white;
         }
       }
 
@@ -170,7 +176,7 @@ body {
         height: 1.4rem;
         transition: 0.3s ease-in-out;
         span {
-          background-color: #eaf2d7;
+          background-color: $white;
           width: 2.2rem;
           height: 0.2rem;
           display: block;
@@ -250,13 +256,13 @@ body {
 }
 
 .shape-overlays path:nth-of-type(1) {
-  fill: #5d576b;
+  fill: $black;
 }
 .shape-overlays path:nth-of-type(2) {
-  fill: #eaf2d7;
+  fill: $white;
 }
 .shape-overlays path:nth-of-type(3) {
-  fill: #fffb25;
+  fill: $mango;
 }
 
 .hidden-wrapper {
@@ -280,7 +286,7 @@ body {
     flex-direction: column;
     &__link {
       text-decoration: none;
-      color: #5d576b;
+      color: $black;
       font-size: 130px;
       position: relative;
       &:after {
@@ -315,7 +321,7 @@ body {
   span {
     width: 2.2rem;
     height: 0.3rem;
-    background-color: #5d576b;
+    background-color: $black;
     display: block;
     &:nth-child(1) {
       transform: rotate(45deg) translateX(0.2rem);
@@ -329,4 +335,28 @@ body {
 .menu-item {
   opacity: 0;
   transition: opacity 0.3s ease-out;
+}
+
+.projects {
+  height: auto;
+  width: 100vw;
+  &__intro-text {
+    margin-right: 64px;
+    width: 60%;
+    float: right;
+    font-size: 2.2rem;
+    text-align: right;
+    color: $white;
+  }
+  .p__wrapper {
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+  .p__wrapper > span {
+    display: inline-block;
+    will-change: transform;
+    position: relative;
+    opacity: 0;
+    transform: translateY(160%);
+  }
 }
