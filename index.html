@@ -1,106 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="./assets/ico.png" type="image/x-icon" />
-    <title>Document</title>
-    <link rel="stylesheet" href="./styles/styles.css" />
-    <link rel="stylesheet" href="./styles/global-vars.css" />
-  </head>
-  <body>
-    <!-- Hi from Dell laptop! -->
-    <!-- Hidden menu -->
-    <div class="hidden-wrapper">
-      <div class="main-menu">
-        <div class="main-menu__wrapper">
-          <a class="main-menu__wrapper__link menu-item bison-outline" href="#">contact</a>
-          <a class="main-menu__wrapper__link menu-item bison-outline" href="#">projects</a>
-        </div>
-        <div class="close-btn menu-item" id="closeBtn"><span></span><span></span></div>
-      </div>
-      <svg class="shape-overlays" id="shapeOverlay" viewBox="0 0 100 100" preserveAspectRatio="none">
-        <path class="shape-overlays__path"></path>
-        <path class="shape-overlays__path"></path>
-        <path class="shape-overlays__path"></path>
-      </svg>
-    </div>
-    <!-- ------------ -->
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="shortcut icon" href="./assets/ico.png" type="image/x-icon" />
+        <title>GLSL Playground</title>
+    </head>
+    <body>
+        <!-- LIBS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r118/three.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.7/dat.gui.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.2/gsap.js"></script>
 
-    <!-- Sections -->
-    <main>
-      <div data-scroll>
-        <section class="splash">
-          <div class="splash__text-container">
-            <h2 class="splash__text-container__title font-bold purple">
-              Volumetric
-            </h2>
-            <h2 class="splash__text-container__title font-bold">
-              designer
-            </h2>
-            <p class="splash__text-container__subtext font-light purple">
-              Yo, who doesn't like 3D shapes coming to life in a thoughtful way.<br />I like to make nice stuf. Lorem ipsum dolor sitt amet.
-            </p>
-            <button class="splash__text-container__cta font-medium">
-              Check my stuff
-            </button>
-          </div>
-        </section>
-        <section class="projects">
-          <div style="height: 100vh;"></div>
-        </section>
-        <div id="container"></div>
-      </div>
-    </main>
-    <!-- ------------ -->
+        <script src="./libs/OrbitControls.js"></script>
+        <script src="./libs/easings.js"></script>
 
-    <div class="splash__navbar">
-      <div class="splash__navbar__tab splash__navbar__tab--logo">
-        <h2 class="relative font-bold purple">Blob</h2>
-      </div>
-      <div class="splash__navbar__tab">
-        <h2 class="relative font-medium" inner="projects">projects</h2>
-      </div>
-      <div class="splash__navbar__tab">
-        <h2 class="relative font-medium" inner="contact">contact</h2>
-      </div>
-      <div class="splash__navbar__tab splash__navbar__tab--space">
-        <div class="line"></div>
-      </div>
-      <div class="splash__navbar__tab">
-        <div class="tab-trigger" id="openMenuBtn">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </div>
-    </div>
+        <!-- SHADERS -->
+        <script src="glsl/vertex.js"></script>
+        <script src="glsl/fragment.js"></script>
 
-    <div class="links">
-      <a target="_blank" href="https://github.com/omzeton" class="links__tab">
-        <img src="./assets/git.svg" alt="Github" />
-      </a>
-      <a target="_blank" href="https://www.linkedin.com/in/adam-rolczyk-a513a118a/" class="links__tab">
-        <img src="./assets/linkedin.svg" alt="LinkedIn" />
-      </a>
-    </div>
-
-    <!-- LIBS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r118/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.7/dat.gui.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.2/gsap.js"></script>
-
-    <script src="./libs/OrbitControls.js"></script>
-    <script src="./libs/easings.js"></script>
-
-    <!-- SHADERS -->
-    <script src="glsl/vertex.js"></script>
-    <script src="glsl/fragment.js"></script>
-
-    <!-- MAIN APP -->
-    <script src="./js/app.js"></script>
-    <script src="./js/animations/svg-overlay.js"></script>
-    <script src="./js/animations/smoothScrollbar.js"></script>
-    <script src="./js/animations/textReveal.js"></script>
-  </body>
+        <!-- MAIN APP -->
+        <script src="./js/app.js"></script>
+        <script src="./js/animations/svg-overlay.js"></script>
+        <script src="./js/animations/smoothScrollbar.js"></script>
+        <script src="./js/animations/textReveal.js"></script>
+    </body>
 </html>
