@@ -104,8 +104,8 @@ class Scene {
     addSettings() {
         const gui = new dat.GUI();
         this.options = {
-            speed: 0.38,
-            size: 0.16,
+            speed: 0.28,
+            size: 0.12,
             perlins: 1.0,
             decay: 1.2,
             displace: 0.54,
@@ -118,12 +118,12 @@ class Scene {
             fragment: false,
             redhell: true,
         };
-        const perlinGUI = gui.addFolder("Na razie kopiuję");
+        const perlinGUI = gui.addFolder("Settings");
         perlinGUI.add(this.options, "speed", 0.1, 1.0).listen();
-        perlinGUI.add(this.options, "size", 0.0, 3.0).listen();
-        perlinGUI.add(this.options, "waves", 0.0, 20.0).listen();
-        perlinGUI.add(this.options, "complex", 0.1, 1.0).listen();
-        perlinGUI.add(this.options, "displace", 0.1, 1.0).listen();
+        perlinGUI.add(this.options, "size", 0.0, 3.0).name("amplitude").listen();
+        perlinGUI.add(this.options, "waves", 0.0, 20.0).name("frequency").listen();
+        perlinGUI.add(this.options, "complex", 0.1, 1.0).name("complexity").listen();
+        perlinGUI.add(this.options, "displace", 0.1, 1.0).name("displacement").listen();
     }
 
     render() {
