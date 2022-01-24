@@ -25,7 +25,7 @@ class Scene {
         });
         this.renderer.setSize(window.innerWidth, window.innerHeight);
         this.renderer.setPixelRatio(window.devicePixelRatio);
-        this.renderer.setClearColor(new THREE.Color("#5D576B"));
+        this.renderer.setClearColor(new THREE.Color("#111111"));
         this.renderer.shadowMap.enabled = true;
         this.scene = new THREE.Scene();
         this.camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 1, 10000);
@@ -110,12 +110,12 @@ class Scene {
             decay: 1.2,
             displace: 0.54,
             complex: 0.2,
-            waves: 3.95,
+            waves: 1.95,
             eqcolor: 6.0,
             rcolor: 0.996,
-            gcolor: 0.576,
-            bcolor: 0.549,
-            fragment: true,
+            gcolor: 0.976,
+            bcolor: 0.749,
+            fragment: false,
             redhell: true,
         };
         const perlinGUI = gui.addFolder("Na razie kopiuję");
